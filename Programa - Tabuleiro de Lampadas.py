@@ -11,11 +11,9 @@ def get_scaling():
     root.destroy()
     return scaling
 
-# Find the number in original screen when GUI designed.
 my_scaling = 1.33333333333      # call get_scaling()
 my_width, my_height = 1920, 1080     # call sg.Window.get_screen_size()
 
-# Get the number for new screen
 scaling_old = get_scaling()
 width, height = sg.Window.get_screen_size()
 
