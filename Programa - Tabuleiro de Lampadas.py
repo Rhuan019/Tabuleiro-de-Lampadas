@@ -1,3 +1,5 @@
+#definicao das bibliotecas e configuracao de escala e cores da interface
+
 import PySimpleGUI as sg
 import numpy as np
 #------------------------------------------------------------------------------
@@ -24,10 +26,13 @@ sg.set_options(scaling=scaling)
 sg.theme('reddit')
 backgroundc='white'
 
+#definicao da matriz do tabuleiro  
 MAX_ROWS = MAX_COL = 6
 state=np.full((MAX_ROWS,MAX_COL), False)
 linha=[]
 l=10
+
+#configuracao dos botoes habilitados e desabilitados e posicionamento dos botoes na interface
 for i in range(MAX_ROWS):
     dado=[]
     for j in range(MAX_COL):
@@ -48,6 +53,7 @@ layout =  [
 linha,base,
            ]
 
+#Logica utilizada para finalizar o programa.
 window = sg.Window('Tabuleiro de Lâmpadas', layout,auto_size_text=True,
                    auto_size_buttons=True, resizable=True, grab_anywhere=False, border_depth=5,
                    default_element_size=(15, 1), finalize=True,background_color=backgroundc).Finalize()
@@ -57,6 +63,7 @@ while True:
     if event in (sg.WIN_CLOSED, 'Exit'):
         break
 
+#Logica utilizada para alterar as cores das casas selecionadas do tabuleiro.
     if event[0]==-1:
         state[:,event[1]]=np.invert(state[:,event[1]])
         for n in range(MAX_COL):
